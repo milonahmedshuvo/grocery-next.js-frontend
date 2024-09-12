@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Providers } from "@/components/providers/page";
+import NavberComponents from "@/components/navber/page";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,9 +29,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased w-full`}
       >
-        {children}
+
+        <Providers> 
+        <NavberComponents/>
+        <div className="max-w-5xl mx-auto">
+          {children}
+        </div>
+         
+        </Providers>
+        
       </body>
     </html>
   );
