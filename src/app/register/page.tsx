@@ -1,4 +1,5 @@
 'use client'
+import { useUserSignupMutation } from "@/redux/api/groceryApi";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 type Inputs = {
@@ -17,18 +18,23 @@ const Register = () => {
     register,
     handleSubmit,
     formState: { errors },
-    // reset
+    reset
   } = useForm<Inputs>()
   
-  
+  const [userSignup, {data, error} ] = useUserSignupMutation()
 
+
+  console.log('data', data)
+  console.log('error', error)
 
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    console.log(data)
-     
-    
+  
    
+    userSignup({
+      data : data
+    })
+   reset()
   }
 
 
@@ -113,22 +119,6 @@ const Register = () => {
 
 
 
-          {/* phone filed  */}
-          {/* <div className="relative flex items-center my-6">
-
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 w-5 h-5 text-gray-500 absolute left-3">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M14.25 9.75v-4.5m0 4.5h4.5m-4.5 0 6-6m-3 18c-8.284 0-15-6.716-15-15V4.5A2.25 2.25 0 0 1 4.5 2.25h1.372c.516 0 .966.351 1.091.852l1.106 4.423c.11.44-.054.902-.417 1.173l-1.293.97a1.062 1.062 0 0 0-.38 1.21 12.035 12.035 0 0 0 7.143 7.143c.441.162.928-.004 1.21-.38l.97-1.293a1.125 1.125 0 0 1 1.173-.417l4.423 1.106c.5.125.852.575.852 1.091V19.5a2.25 2.25 0 0 1-2.25 2.25h-2.25Z" />
-            </svg>
-
-            <input
-              type="text"
-              className="pl-10 pr-10 py-2  border-b-2 rounded-md focus:outline-none w-full "
-              placeholder="phone"
-              {...register("phone", { required: true })}
-            />
-          </div> */}
-
-
 
           {/* role filed this  */}
           <div className="relative flex items-center my-6">
@@ -148,28 +138,13 @@ const Register = () => {
 
 
 
-          {/* address filed this  */}
-          {/* role filed this  */}
-          {/* <div className="relative flex items-center my-6">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 w-5 h-5 text-gray-500 absolute left-3">
-              <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
-            </svg>
-
-
-
-            <input
-              type="text"
-              className="pl-10 pr-10 py-2  border-b-2 rounded-md focus:outline-none w-full "
-              placeholder="address"
-              {...register("address", { required: true })}
-            />
-          </div> */}
+         
 
 
 
           {errors.name && <span>This field is  required </span>}
 
-          <input type="submit" className='bg-[#FF004C] text-white py-2 px-6 w-1/2 font-semibold' />
+          <input type="submit" className='bg-blue-400 text-white py-2 px-6 w-1/2 font-semibold' />
         </form>
 
 

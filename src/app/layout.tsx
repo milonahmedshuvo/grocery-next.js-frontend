@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "@/components/providers/page";
 import NavberComponents from "@/components/navber/page";
+import ReduxProvider from "@/components/reduxProvider/reduxProvider";
+
 
 
 const geistSans = localFont({
@@ -26,20 +28,29 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
+
+  
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased w-full`}
       >
 
-        <Providers> 
+          
+        <ReduxProvider> 
+        <Providers>   {/* next ui provider  */}   
         <NavberComponents/>
         <div className="max-w-5xl mx-auto">
           {children}
         </div>
-         
         </Providers>
-        
+        </ReduxProvider>
+
+
+
       </body>
     </html>
   );
