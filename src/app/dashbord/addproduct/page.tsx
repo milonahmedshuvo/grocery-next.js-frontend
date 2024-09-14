@@ -1,9 +1,10 @@
 'use client'
 
 import { useForm, SubmitHandler } from "react-hook-form"
-// import toast from "react-hot-toast"
+import toast from "react-hot-toast"
 import axios from "axios"
-
+import { useProductaddMutation } from "@/redux/api/groceryApi"
+ 
 
 
 
@@ -17,30 +18,29 @@ type Inputs = {
 }
 
 
-const CreateFacility = () => {
+const AddProduct = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    // reset
+    reset
   } = useForm<Inputs>()
   
-//   const [facilityPost, {data, error, isSuccess, isError} ] = useFacilityPostMutation()
+  const [productadd, {data, error, isSuccess, isError} ] = useProductaddMutation()
   
-//   console.log(data)
+  
   
 
 
 
-//   if(isError){
-//     toast.error('Facility Filed...!!')
-//     console.log("backend error", error)
-//   }
+  if(isError){
+    toast.error('product add Filed...!!')
+    console.log("backend error", error)
+  }
 
-//   if(isSuccess){
-//     toast.success('Create Facility Successfully...!!')
-//     console.log(data)
-//   }
+  if(isSuccess){
+    toast.success(data.message)
+  }
 
 
 
@@ -77,23 +77,23 @@ const CreateFacility = () => {
         })
 
          
-        //  const products = {
-        //     name: data.name,
-        //     description: data.description,
-        //     pricePerHour : Number(data.pricePerHour),
-        //     location: data.location,
-        //     image: response.data.data.url
-        //    }
+         const product = {
+            title: data.title,
+            description: data.description,
+            price: Number(data.price),
+            beforePrice: Number(data.beforePrice),
+            image: response.data.data.url
+           }
 
 
-    //    facilityPost({
-    //        data: facilityData
-    //    })
+       productadd({
+           data: product
+       })
 
         console.log("image upload success:", response.data.data.url)
         
        
-        // reset()
+        reset()
     } catch(err){
         console.log("error uploading image", err)
     }
@@ -229,4 +229,4 @@ const CreateFacility = () => {
   )
 }
 
-export default CreateFacility;
+export default AddProduct;

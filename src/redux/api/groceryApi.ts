@@ -16,6 +16,39 @@ export const groceryApi = createApi({
         }
       }
     }),
+
+    userSignin: builder.mutation({
+      query: (commingData) =>{
+       
+        return {
+            url: '/api/v1/user/login',
+            method: 'POST',
+            body : commingData
+        }
+      }
+    }),
+
+    productadd: builder.mutation({
+      query: (commingData) =>{
+       
+        return {
+            url: '/api/v1/product/add',
+            method: 'POST',
+            body : commingData
+        }
+      }
+    }),
+
+    productGet: builder.query({
+      query: ( ) =>{
+       
+        return {
+            url: '/api/v1/product/all',
+        }
+      }
+    }),
+
+
   }),
 })
 
@@ -23,4 +56,4 @@ export const groceryApi = createApi({
 
 
 
-export const { useUserSignupMutation } = groceryApi
+export const { useUserSignupMutation, useUserSigninMutation, useProductaddMutation, useProductGetQuery } = groceryApi

@@ -53,8 +53,8 @@ const NavberComponents = () => {
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#" className="text-white">
-            Integrations
+          <Link color="foreground" href="/dashbord" className="text-white">
+            Dashbord
           </Link>
         </NavbarItem>
       </NavbarContent>

@@ -4,7 +4,7 @@ import "./globals.css";
 import { Providers } from "@/components/providers/page";
 import NavberComponents from "@/components/navber/page";
 import ReduxProvider from "@/components/reduxProvider/reduxProvider";
-
+import { Toaster } from 'react-hot-toast';
 
 
 const geistSans = localFont({
@@ -46,6 +46,7 @@ export default function RootLayout({
         <div className="max-w-5xl mx-auto">
           {children}
         </div>
+        <Toaster /> 
         </Providers>
         </ReduxProvider>
 

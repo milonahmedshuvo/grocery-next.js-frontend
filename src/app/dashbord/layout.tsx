@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react'
 import { Avatar } from "@nextui-org/react";
+import Link from 'next/link';
 
 
 
@@ -35,6 +36,9 @@ const dashbordLayout = ({ children }: childrenTypes) => {
 
         <div className='w-1/5 pr-2 '>
           <ul>
+
+            
+            <Link href='/dashbord/allproduct'>
             <li className='flex justify-around items-center my-4'>
               <div className='flex justify-between items-center gap-2'>
                 
@@ -45,9 +49,11 @@ const dashbordLayout = ({ children }: childrenTypes) => {
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
               </svg>
-
-
             </li>
+            </Link>
+
+
+
           </ul>
         </div>
 
@@ -61,7 +67,7 @@ const dashbordLayout = ({ children }: childrenTypes) => {
 
         {/* dainamic show all children components  */}
 
-        <div className=' w-4/5 '>
+        <div className=' w-4/5 pt-4'>
           {children}
         </div>
       </div>
