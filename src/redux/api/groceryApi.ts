@@ -5,6 +5,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const groceryApi = createApi({
   reducerPath: 'groceryApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000' }),
+  tagTypes: ['product'],
   endpoints: (builder) => ({
     userSignup: builder.mutation({
       query: (commingData) =>{
@@ -39,13 +40,37 @@ export const groceryApi = createApi({
       }
     }),
 
+    productDelete: builder.mutation({
+      query: (id) =>{
+      //  console.log('delete id', id.data)
+        return {
+            url: `/api/v1/product/delete/${id.data}`,
+            method: 'DELETE',        
+        }
+      },
+      invalidatesTags: ['product']
+    }),
+
+    productUpdate: builder.mutation({
+      query: ({id, product}) =>{
+
+        return {
+            url: `/api/v1/product/update/${id}`,
+            method: 'PATCH',
+            body: product        
+        }
+      },
+      invalidatesTags: ['product']
+    }),
+
     productGet: builder.query({
       query: ( ) =>{
        
         return {
             url: '/api/v1/product/all',
         }
-      }
+      },
+      providesTags: ['product']
     }),
 
 
@@ -56,4 +81,4 @@ export const groceryApi = createApi({
 
 
 
-export const { useUserSignupMutation, useUserSigninMutation, useProductaddMutation, useProductGetQuery } = groceryApi
+export const { useUserSignupMutation, useUserSigninMutation, useProductaddMutation, useProductGetQuery, useProductDeleteMutation, useProductUpdateMutation } = groceryApi
