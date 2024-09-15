@@ -10,7 +10,7 @@ type TProduct = {
     isDaleted: boolean
 }
 
-const productPage = async () => {
+const HomeproductPage = async () => {
 
     const res = await fetch('http://localhost:5000/api/v1/product/all', {
         cache: 'no-store'
@@ -24,6 +24,8 @@ const productPage = async () => {
 
     return (
         <div className="mt-10">
+
+            <p className="text-2xl font-semibold mb-10">Just For You</p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-20 px-4">
                 {
@@ -75,4 +77,4 @@ const productPage = async () => {
     )
 }
 
-export default productPage
+export default HomeproductPage
