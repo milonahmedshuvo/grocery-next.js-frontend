@@ -13,7 +13,7 @@ const dashbordLayout = ({ children }: childrenTypes) => {
   return (
     <div >
 
-      <section className=' flex  flex-col md:flex-row justify-between items-center border-b py-3 '>
+      <section className=' flex  flex-col md:flex-row justify-between items-center border-b py-3  '>
         <div>
 
           <img src='https://coolors.co/assets/img/logo.svg' alt="" />

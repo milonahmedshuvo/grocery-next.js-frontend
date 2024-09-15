@@ -43,13 +43,13 @@ const NavberComponents = () => {
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="#" className="text-white">
-            Features
+          <Link color="foreground" href="/" className="text-white">
+            Home
           </Link>
         </NavbarItem>
         <NavbarItem isActive>
-          <Link href="#" aria-current="page" className="text-white" >
-            Customers
+          <Link href="/products" aria-current="page" className="text-white" >
+            Products
           </Link>
         </NavbarItem>
         <NavbarItem>
