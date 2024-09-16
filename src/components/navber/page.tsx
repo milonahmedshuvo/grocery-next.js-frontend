@@ -3,6 +3,7 @@
 import React from "react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button, Badge,  } from "@nextui-org/react";
 import { useAppSelector } from "@/redux/hooks";
+import ThemeToggle from "../nextTheme/page";
 
 
 
@@ -66,6 +67,13 @@ const NavberComponents = () => {
               Dashbord
             </Link>
           </NavbarItem>
+
+          <NavbarItem>
+            <Link color="foreground" href="#" className="text-white">
+              <ThemeToggle></ThemeToggle>
+            </Link>
+          </NavbarItem>
+
         </NavbarContent>
         <NavbarContent justify="end">
           <NavbarItem className=" lg:flex">

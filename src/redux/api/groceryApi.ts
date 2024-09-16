@@ -4,7 +4,14 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const groceryApi = createApi({
   reducerPath: 'groceryApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000',
+    prepareHeaders: (Headers) => {
+      const token = localStorage.getItem('accessToken')
+      if(token){
+        Headers.set('Authorization', token)
+      }
+     }
+   }),
   tagTypes: ['product'],
   endpoints: (builder) => ({
     userSignup: builder.mutation({
@@ -73,6 +80,17 @@ export const groceryApi = createApi({
       providesTags: ['product']
     }),
 
+    orderCreate: builder.mutation({
+      query: (commingData) =>{
+       
+        return {
+            url: '/api/v1/order/create',
+            method: 'POST',
+            body : commingData
+        }
+      }
+    }),
+
 
   }),
 })
@@ -81,4 +99,4 @@ export const groceryApi = createApi({
 
 
 
-export const { useUserSignupMutation, useUserSigninMutation, useProductaddMutation, useProductGetQuery, useProductDeleteMutation, useProductUpdateMutation } = groceryApi
+export const { useUserSignupMutation, useUserSigninMutation, useProductaddMutation, useProductGetQuery, useProductDeleteMutation, useProductUpdateMutation, useOrderCreateMutation } = groceryApi

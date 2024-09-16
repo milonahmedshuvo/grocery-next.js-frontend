@@ -1,6 +1,12 @@
 'use client'
 import { useUserSignupMutation } from "@/redux/api/groceryApi";
+import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
+import img from '../../app/image/authentication.jpg'
+import Image from "next/image";
+import toast from "react-hot-toast";
+
+
 
 type Inputs = {
   name: string,
@@ -21,11 +27,18 @@ const Register = () => {
     reset
   } = useForm<Inputs>()
   
-  const [userSignup, {data, error} ] = useUserSignupMutation()
+  const [userSignup, {data, error, isSuccess, isError} ] = useUserSignupMutation()
 
-
-  console.log('data', data)
-  console.log('error', error)
+  
+  if(isSuccess){
+    console.log('data', data)
+    toast.success(data.message)
+    localStorage.setItem('accessToken', data?.data?.accessToken)
+  }
+  if(isError){
+    console.log('error', error)
+  }
+  
 
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -49,8 +62,12 @@ const Register = () => {
     <div className='flex flex-col md:flex-row justify-center md:gap-5 lg:gap-40  items-center h-screen '>
 
       <div>
-        {/* <img src={signup} alt="" /> */}
-        <h1>Image</h1>
+         <Image
+         src={img}
+         width={500}
+         height={500}
+         alt="user"
+         />
       </div>
 
       {/* create from here ...........  */}
@@ -150,7 +167,7 @@ const Register = () => {
 
 
 
-        {/* <p className='mt-10'>Already have an account? <Link to='/login'> <span className='text-[#FF004C] font-semibold'>Login</span></Link> </p> */}
+         <p className='mt-10'>Already have an account? <Link href='/login'> <span className='text-blue-400 font-semibold'>Login</span></Link> </p>
 
 
 

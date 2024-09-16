@@ -1,8 +1,15 @@
 'use client'
 
 import { SubmitHandler, useForm } from "react-hook-form"
-type Inputs = {
+import img from '../../app/image/authentication.jpg'
+import Image from "next/image"
+import { useUserSigninMutation } from "@/redux/api/groceryApi"
+import toast from "react-hot-toast"
+import Link from "next/link"
 
+
+
+type Inputs = {
   email: string,
   password: string,
 
@@ -10,7 +17,6 @@ type Inputs = {
 
 
 const LoginPage = () => {
-
   const {
     register,
     handleSubmit,
@@ -18,16 +24,27 @@ const LoginPage = () => {
     reset
   } = useForm<Inputs>()
   
-
+  const [userLogin, {data, isSuccess, error, isError }] = useUserSigninMutation()
   
 
+  if(isSuccess){
+    console.log('data', data)
+    toast.success(data.message)
+    localStorage.setItem('accessToken', data?.data?.accessToken)
+  }
   
+  if(isError){
+    console.log(error)
+    toast.error('login failed')
+  }
 
 
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log(data)
-    
+    userLogin({
+      data : data
+    })
 
     reset()
   }
@@ -44,14 +61,18 @@ const LoginPage = () => {
     <div className='flex flex-col md:flex-row justify-center md:gap-5 lg:gap-40  items-center h-screen '>
 
       <div>
-        {/* <img src={signin} alt="" /> */}
-        <h1>image</h1>
+         <Image
+          src={img}
+          width={500}
+          height={500}
+          alt="user"
+         />
       </div>
 
       {/* create from here ...........  */}
 
       <div>
-        <p className='text-3xl text-[#00A7F9] font-semibold '>Save Your Account Now</p>
+        <p className='text-3xl text-[#00A7F9] font-semibold '>Login Your Account Now</p>
         <span>please sheare your information in form </span>
 
 
@@ -100,9 +121,10 @@ const LoginPage = () => {
           <input type="submit" className='bg-[#00A7F9] text-white py-2 px-6 w-1/2 font-semibold mt-4' />
         </form>
 
+        <p className='mt-10'>You have new account? <Link href='/register'> <span className='text-blue-400 font-semibold'>Regiter</span></Link> </p>
 
       </div>
-
+      
     </div>
   )
 }
