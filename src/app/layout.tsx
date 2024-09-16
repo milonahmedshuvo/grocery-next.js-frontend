@@ -7,6 +7,7 @@ import ReduxProvider from "@/components/reduxProvider/reduxProvider";
 import { Toaster } from 'react-hot-toast';
 
 
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -41,6 +42,7 @@ export default function RootLayout({
 
           
         <ReduxProvider> 
+        
         <Providers>   {/* next ui provider  */}   
         <NavberComponents/>
         <div className="max-w-5xl mx-auto">
@@ -48,6 +50,7 @@ export default function RootLayout({
         </div>
         <Toaster /> 
         </Providers>
+        
         </ReduxProvider>
 
 

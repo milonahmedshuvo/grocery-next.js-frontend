@@ -1,22 +1,70 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { groceryApi } from './api/groceryApi'
+import productSlice from './feature/product/productSlice'
+
+// use redux parsist 
+import { combineReducers } from 'redux';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+
+
+const persistConfig = {
+  key: 'root',
+  version: 1,
+  storage,
+};
+
+const rootReducer = combineReducers({
+  product: productSlice,
+  [groceryApi.reducerPath] : groceryApi.reducer,
+});
+
+
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 
 
 export const store = configureStore({
-  reducer: {
-   
-    [groceryApi.reducerPath] : groceryApi.reducer
-  },
-
+  reducer: persistedReducer,
+  
+  
 
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(groceryApi.middleware),
-})
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }).concat(groceryApi.middleware), 
+  
+});
+
+export const persistor = persistStore(store);
 
 
 
 
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+
+// export const store = configureStore({
+//   reducer: {
+//     product : productSlice,
+//     [groceryApi.reducerPath] : groceryApi.reducer
+//   },
+
+
+//   middleware: (getDefaultMiddleware) =>
+//     getDefaultMiddleware().concat(groceryApi.middleware),
+// })
+
+// export type RootState = ReturnType<typeof store.getState>
+// export type AppDispatch = typeof store.dispatch

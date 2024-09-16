@@ -1,4 +1,6 @@
+import Button from "@/components/button/page"
 import Image from "next/image"
+import Link from "next/link"
 
 type TProduct = {
     _id: string,
@@ -29,17 +31,19 @@ const productPage = async () => {
                 {
                     products?.data?.map((product: TProduct) => (
                         <div key={product._id}>
-
+                             
+                           <Link href={`/products/${product._id}`} >   
                             <Image
                                 src={product.image}
                                 width={500}
                                 height={500}
                                 alt="Picture of the author"
                             />
+                            </Link>
                             <p className="text-start mt-4 text-xs md:text-sm"> <span className="font-semibold text-gray-400 line-through">৳{product.beforePrice}</span> <span className="font-bold text-green-400"> ৳ {product.price} </span> <span className="text-yellow-500 font-semibold">(-{product.beforePrice - product.price}TK) </span>  </p>
-
+                            <Link href={`/products/${product._id}`} >
                             <p className="text-start mt-2 text-xs md:text-sm"> {product.title} </p>
-
+                            </Link>
                             <div className="flex justify-start gap-1 items-center">
                                 <span className="text-yellow-500 flex mt-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className=" size-4 md:size-5">
@@ -63,8 +67,8 @@ const productPage = async () => {
                                 <span className="text-xs mt-2">(0.00/5.0)</span>
                             </div>
 
-                            <button className="bg-blue-400 text-white text-[10px] md:text-xs w-full py-[2px] md:py-[4px] rounded  mt-6" >Add To Cart</button>
-
+                            {/* <button className="bg-blue-400 text-white text-[10px] md:text-xs w-full py-[2px] md:py-[4px] rounded  mt-6" >Add To Cart</button> */}
+                            <Button product={product} ></Button>
                         </div>
                     ))
                 }
