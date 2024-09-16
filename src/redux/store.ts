@@ -26,7 +26,11 @@ const persistConfig = {
 const rootReducer = combineReducers({
   product: productSlice,
   [groceryApi.reducerPath] : groceryApi.reducer,
+  
 });
+
+
+
 
 
 
