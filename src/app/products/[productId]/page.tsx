@@ -33,7 +33,7 @@ const productDatailsPage = async ({ params }: { params: { productId: string } })
     const { title, description, price, beforePrice, image, _id } = product?.data
 
 
-    console.log("review", reviews.data)
+    // console.log("review", reviews.data)
 
     return (
         <div className="mb-10">

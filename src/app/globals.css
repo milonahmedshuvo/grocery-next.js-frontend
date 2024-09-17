@@ -11,3 +11,14 @@ body {
     @apply bg-gray-900 text-white;
   }
   
+
+
+  /* scollbar  */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  

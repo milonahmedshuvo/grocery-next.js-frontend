@@ -80,6 +80,16 @@ export const groceryApi = createApi({
       providesTags: ['product']
     }),
 
+    productGetReverce: builder.query({
+      query: ( ) =>{
+       
+        return {
+            url: '/api/v1/product/all/reverce',
+        }
+      },
+      providesTags: ['product']
+    }),
+
     orderCreate: builder.mutation({
       query: (commingData) =>{
        
@@ -101,4 +111,4 @@ export const groceryApi = createApi({
 
 
 
-export const { useUserSignupMutation, useUserSigninMutation, useProductaddMutation, useProductGetQuery, useProductDeleteMutation, useProductUpdateMutation, useOrderCreateMutation } = groceryApi
+export const { useUserSignupMutation, useUserSigninMutation, useProductaddMutation, useProductGetQuery, useProductDeleteMutation, useProductUpdateMutation, useOrderCreateMutation, useProductGetReverceQuery } = groceryApi

@@ -25,7 +25,7 @@ const productPage = async () => {
 
 
     return (
-        <div className="mt-10">
+        <div className="mt-10 mb-14">
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-20 px-4">
                 {
