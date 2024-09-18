@@ -1,6 +1,7 @@
 import ButtonAddToCartDatails from "@/components/buttonaddtocartDatails/page"
 import ButtonBuyNowPage from "@/components/buttonBuynow/page"
 import CommentInput from "@/components/commentInput/page"
+import { Metadata } from "next"
 import Image from "next/image"
 
 
@@ -12,15 +13,21 @@ type TReview = {
     userName: string,
 }
 
+export const metadata: Metadata = {
+    title: "product datails page",
+  };
+
+
+
 
 const productDatailsPage = async ({ params }: { params: { productId: string } }) => {
-    const res = await fetch(`http://localhost:5000/api/v1/product/single/${params.productId}`, {
+    const res = await fetch(`https://grocery-store-backend-eight.vercel.app/api/v1/product/single/${params.productId}`, {
         cache: 'no-store'
     })
     const product = await res.json()
 
 
-    const reviewResponse = await fetch(`http://localhost:5000/api/v1/review/product/${params.productId}`, {
+    const reviewResponse = await fetch(`https://grocery-store-backend-eight.vercel.app/api/v1/review/product/${params.productId}`, {
         cache: 'no-store'
     })
     const reviews = await reviewResponse.json()

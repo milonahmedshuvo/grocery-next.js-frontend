@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const groceryApi = createApi({
   reducerPath: 'groceryApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000',
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://grocery-store-backend-eight.vercel.app',
     prepareHeaders: (Headers) => {
       const token = localStorage.getItem('accessToken')
       if(token){

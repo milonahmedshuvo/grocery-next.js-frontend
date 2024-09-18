@@ -15,32 +15,69 @@ const CommentInput = ({title, productId}: {title:string, productId:string}) => {
   
 
 
+   const handleComment: SubmitHandler<Inputs> = async (data) => {
+    const token = localStorage.getItem('accessToken');
 
-
-  const handleComment:SubmitHandler<Inputs> = async (data) => {
-    const token:string = localStorage.getItem('accessToken')
-
-    console.log(token)
-    const review = {
-      comment: data.comment,
-      productName: title,
-      productId: productId 
+    if (!token) {
+        console.error("Token is null or missing");
+        toast.error("You are not authorized user");
+        return;
     }
+
+    console.log(token);
+    const review = {
+        comment: data.comment,
+        productName: title,
+        productId: productId
+    };
+
+    try {
+        const res = await createComment(review, token);
+        console.log(res);
+        toast.success(res.message);
+    } catch (err) {
+        console.log(err);
+        toast.error("You are not authorized user");
+    }
+
+    reset();
+};
+
+
+
+
+
+
+
+
+
+  // const handleComment:SubmitHandler<Inputs> = async (data) => {
+  //   const token:string  = localStorage.getItem('accessToken')
+
+
+    
+
+  //   console.log(token)
+  //   const review = {
+  //     comment: data.comment,
+  //     productName: title,
+  //     productId: productId 
+  //   }
    
 
-  //  console.log(review)
+  // //  console.log(review)
 
-     try{
-       const res = await createComment(review, token)
-       console.log(res)
-       toast.success(res.message)
-     }catch(err){
-      console.log(err)
-      toast.error("You are not authorized user")
-     }
+  //    try{
+  //      const res = await createComment(review, token)
+  //      console.log(res)
+  //      toast.success(res.message)
+  //    }catch(err){
+  //     console.log(err)
+  //     toast.error("You are not authorized user")
+  //    }
 
-    reset()
-  }
+  //   reset()
+  // }
 
   
 

@@ -1,6 +1,5 @@
 'use client'
 import { useProductGetReverceQuery } from '@/redux/api/groceryApi';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRef } from 'react';
 import Button from '../button/page';
@@ -20,7 +19,7 @@ type TProduct = {
 
 
 const ProductCarousel = () => {
-  const carouselRef = useRef(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
 
   const { data } = useProductGetReverceQuery(undefined)
@@ -36,14 +35,14 @@ const ProductCarousel = () => {
 
 
   const scrollNext = () => {
-    carouselRef.current.scrollBy({
+    carouselRef.current?.scrollBy({
       left: 300, // Adjust based on the width of each product card
       behavior: 'smooth',
     });
   };
 
   const scrollPrev = () => {
-    carouselRef.current.scrollBy({
+    carouselRef.current?.scrollBy({
       left: -300, // Adjust based on the width of each product card
       behavior: 'smooth',
     });

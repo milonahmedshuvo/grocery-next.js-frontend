@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+### Project Name / Frontend 
+* Grocery Store manage
 
-## Getting Started
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Project Description
+* The Groceries Marketplace project aims to enhance user engagement and functionality within the groceries domain by incorporating essential features and UI/UX improvements. By leveraging modern technologies and design principles, the platform will offer a seamless and immersive shopping experience, enabling users to browse, purchase, and review grocery products with ease and confidence.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Features
+* this project have two role user and admin.
+* this project use redux and manage all api call by redux. 
+* user can see avaiable sorts time for booking before confirm booking.
+* emplement user dashbord which access specific on feature and
+* emplement admin dashbord 
+* admin can create multipule admin account in admin dashbord.
+* admin can create facility and emplement CRUD operation.
+* admin can see all booking feature.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Technology Stack
+* Frontend technology : React, Redux, Typescript and tailwind etc.
+* Backend technology : Node js and Express js , Mongodb, Mongoose and typescript use modules pattern.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Installation Guideline 
+* git clone ( repo link)
+* npm install
+* npm run dev
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+### Local Project Dependencies Installed via npm
+* npm install react react-dom
+* npm install typescript
+* npm install react-hook-form
+* npm install tailwindcss
+* npm install @reduxjs/toolkit react-redux
+* npm install axios
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

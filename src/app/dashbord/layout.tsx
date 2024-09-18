@@ -50,23 +50,7 @@ const DashbordLayout =  ({ children }: childrenTypes) => {
         <div className='w-1/5 pr-2 '>
           <ul>
              {
-               data?.data?.role === 'user'? <>
-               
-               <Link href='/dashbord/myorder'>
-            <li className='flex justify-between items-center my-4'>
-              <div className='flex justify-between items-center gap-2'>
-                
-                <img className='w-[20px]' src="https://server.niroghealthplus.com/images/1720377036866-447194906-Category%20Herbal%20icon%20%20webp.webp" alt="" />
-                <span> My Order </span>
-              </div>
-
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-              </svg>
-            </li>
-            </Link>
-               
-               </> : <>
+               data?.data?.role === 'admin'?  <>
                
                <Link href='/dashbord/allproduct'>
             <li className='flex justify-between items-center my-4'>
@@ -97,7 +81,23 @@ const DashbordLayout =  ({ children }: childrenTypes) => {
             </li>
             </Link>
                
-               </>
+               </> : <>
+               
+               <Link href='/dashbord/myorder'>
+            <li className='flex justify-between items-center my-4'>
+              <div className='flex justify-between items-center gap-2'>
+                
+                <img className='w-[20px]' src="https://server.niroghealthplus.com/images/1720377036866-447194906-Category%20Herbal%20icon%20%20webp.webp" alt="" />
+                <span> My Order </span>
+              </div>
+
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              </svg>
+            </li>
+            </Link>
+               
+               </> 
  
              }
 

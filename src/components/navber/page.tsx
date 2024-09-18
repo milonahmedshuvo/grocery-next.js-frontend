@@ -58,7 +58,7 @@ const NavberComponents = () => {
               Home
             </Link>
           </NavbarItem>
-          <NavbarItem isActive>
+          <NavbarItem >
             <Link href="/products" aria-current="page" className="text-white" >
               Products
             </Link>

@@ -12,7 +12,7 @@ type TProduct = {
 
 
 const BandCarousel = () => {
-  const carouselRef = useRef(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
 
 //   const { data } = useProductGetReverceQuery(undefined)
@@ -56,14 +56,14 @@ const BandCarousel = () => {
 
 
   const scrollNext = () => {
-    carouselRef.current.scrollBy({
+    carouselRef.current?.scrollBy({
       left: 300, // Adjust based on the width of each product card
       behavior: 'smooth',
     });
   };
 
   const scrollPrev = () => {
-    carouselRef.current.scrollBy({
+    carouselRef.current?.scrollBy({
       left: -300, // Adjust based on the width of each product card
       behavior: 'smooth',
     });
@@ -77,7 +77,7 @@ const BandCarousel = () => {
   return (
     <div className="relative w-full mb-20 mt-2">
 
-      <p className='text-2xl font-semibold' > Popular Brands </p>
+      <p className='text-2xl font-semibold mb-2' > Popular Brands </p>
 
       <button
         onClick={scrollPrev}

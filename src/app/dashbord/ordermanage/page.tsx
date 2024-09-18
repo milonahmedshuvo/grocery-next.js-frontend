@@ -27,7 +27,7 @@ const  OrderManagepage = () => {
 
 
 //    useEffect( () => {
-//    fetch('http://localhost:5000/api/v1/order/all')
+//    fetch('https://grocery-store-backend-eight.vercel.app/api/v1/order/all')
 //     .then((res) => res.json())
 //     .then((data) => console.log("this data ay", data))
 
