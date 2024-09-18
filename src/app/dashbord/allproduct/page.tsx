@@ -43,18 +43,18 @@ const  AllproductPage = () => {
 
 
   return (
-    <div> 
+    <div className=""> 
 
         
       <section className="flex justify-between items-center">
-        <p className="uppercase text-sm " >All Products</p>
+        <p className="uppercase  ml-4 text-lg" >All Products</p>
         <Link href='/dashbord/addproduct'> <Button color="primary">Add product</Button> </Link>
       </section>
 
 
 
 
-      <div className="overflow-x-auto mt-6">
+      <div className="overflow-x-auto mt-6 h-[500px]">
       <table className="min-w-full text-left table-auto">
         <thead>
           <tr className="bg-gray-100 text-gray-700 uppercase text-sm">

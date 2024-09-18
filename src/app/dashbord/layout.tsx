@@ -1,6 +1,9 @@
+'use client'
+
 import React, { ReactNode } from 'react'
 import { Avatar } from "@nextui-org/react";
 import Link from 'next/link';
+import { useCurrentUserQuery } from '@/redux/api/groceryApi';
 
 
 
@@ -9,7 +12,17 @@ interface childrenTypes {
 }
 
 
-const dashbordLayout = ({ children }: childrenTypes) => {
+
+const DashbordLayout =  ({ children }: childrenTypes) => {
+
+      const {data, error }  = useCurrentUserQuery(undefined)
+
+      console.log(data?.data?.role)
+      console.log(error)
+
+      
+     
+
   return (
     <div >
 
@@ -36,22 +49,63 @@ const dashbordLayout = ({ children }: childrenTypes) => {
 
         <div className='w-1/5 pr-2 '>
           <ul>
-
-            
-            <Link href='/dashbord/allproduct'>
-            <li className='flex justify-around items-center my-4'>
+             {
+               data?.data?.role === 'user'? <>
+               
+               <Link href='/dashbord/myorder'>
+            <li className='flex justify-between items-center my-4'>
               <div className='flex justify-between items-center gap-2'>
                 
-                <img src="https://server.niroghealthplus.com/images/1720377036866-447194906-Category%20Herbal%20icon%20%20webp.webp" alt="" />
+                <img className='w-[20px]' src="https://server.niroghealthplus.com/images/1720377036866-447194906-Category%20Herbal%20icon%20%20webp.webp" alt="" />
+                <span> My Order </span>
+              </div>
+
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              </svg>
+            </li>
+            </Link>
+               
+               </> : <>
+               
+               <Link href='/dashbord/allproduct'>
+            <li className='flex justify-between items-center my-4'>
+              <div className='flex justify-between items-center gap-2'>
+                
+                <img className='w-[20px]' src="https://server.niroghealthplus.com/images/1720377036866-447194906-Category%20Herbal%20icon%20%20webp.webp" alt="" />
                 <span> All Products</span>
               </div>
 
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
               </svg>
             </li>
             </Link>
 
+
+            <Link href='/dashbord/ordermanage'>
+            <li className='flex justify-between items-center my-4'>
+              <div className='flex justify-between items-center gap-2'>
+                
+                <img className='w-[20px]' src="https://server.niroghealthplus.com/images/1720377036866-447194906-Category%20Herbal%20icon%20%20webp.webp" alt="" />
+                <span> Orders Manage </span>
+              </div>
+
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              </svg>
+            </li>
+            </Link>
+               
+               </>
+ 
+             }
+
+            
+            
+
+
+          
 
 
           </ul>
@@ -75,4 +129,4 @@ const dashbordLayout = ({ children }: childrenTypes) => {
   )
 }
 
-export default dashbordLayout
+export default DashbordLayout

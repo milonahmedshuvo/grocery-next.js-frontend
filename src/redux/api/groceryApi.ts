@@ -12,7 +12,7 @@ export const groceryApi = createApi({
       }
      }
    }),
-  tagTypes: ['product'],
+  tagTypes: ['product', 'orders'],
   endpoints: (builder) => ({
     userSignup: builder.mutation({
       query: (commingData) =>{
@@ -101,7 +101,48 @@ export const groceryApi = createApi({
       }
     }),
 
+    orderStatusChange: builder.mutation({
+      query: (id) =>{
+       
+        return {
+            url: `/api/v1/order//status/change/${id.id}`,
+            method: 'DELETE',
+        }
+      },
+      invalidatesTags: ['orders']
+    }),
+
+
+    orderGetAll: builder.query({
+      query: ( ) =>{
+       
+        return {
+            url: '/api/v1/order/all',   
+        }
+      },
+      providesTags: ['orders']
+    }),
+
     
+    myOrder: builder.query({
+      query: ( ) =>{
+       
+        return {
+            url: '/api/v1/order/myorder',   
+        }
+      },
+      providesTags: ['orders']
+    }),
+
+
+    currentUser: builder.query({
+      query: ( ) =>{
+       
+        return {
+            url: '/api/v1/user/currentUser',   
+        }
+      },
+    }),
 
 
   }),
@@ -111,4 +152,4 @@ export const groceryApi = createApi({
 
 
 
-export const { useUserSignupMutation, useUserSigninMutation, useProductaddMutation, useProductGetQuery, useProductDeleteMutation, useProductUpdateMutation, useOrderCreateMutation, useProductGetReverceQuery } = groceryApi
+export const { useUserSignupMutation, useUserSigninMutation, useProductaddMutation, useProductGetQuery, useProductDeleteMutation, useProductUpdateMutation, useOrderCreateMutation, useProductGetReverceQuery, useOrderGetAllQuery, useOrderStatusChangeMutation, useMyOrderQuery, useCurrentUserQuery } = groceryApi

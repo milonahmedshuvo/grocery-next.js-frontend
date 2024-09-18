@@ -38,7 +38,8 @@ const NavberComponents = () => {
   ];
 
   return (
-    <div className="bg-blue-400">
+    <div className="bg-blue-400 py-2 ">
+
       <Navbar onMenuOpenChange={setIsMenuOpen} className="" >
         <NavbarContent>
           <NavbarMenuToggle
@@ -46,8 +47,8 @@ const NavberComponents = () => {
             className="sm:hidden"
           />
           <NavbarBrand>
-            <p>image</p>
-            <p className="font-bold text-inherit text-white ">ACME</p>
+             <img src="https://ebangladesh.com/_ipx/s_30x30/images/ebangladesh_alt.webp" alt="" />
+            <p className="font-bold text-inherit text-white ml-2 text-2xl ">Bangladesh</p>
           </NavbarBrand>
         </NavbarContent>
 
@@ -112,7 +113,6 @@ const NavberComponents = () => {
           ))}
         </NavbarMenu>
       </Navbar>
-
     </div>
   )
 }
